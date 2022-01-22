@@ -1,21 +1,19 @@
-function solution(n, lost, reserve) {
-    var answer = 0;
+const solution = (n, lost, reserve) => {
+    let answer = n;
 
     for(let i in lost) {
         if(reserve.includes(i)) reserve = reserve.filter(v=> v!== i);
     }
     
-    for(let i=0; i < lost.length; i++) {
-        if(reserve.includes(lost[i]++) || reserve.includes(lost[i]--)) {
-            answer++;
+    for(let e of lost) {
+        if(reserve.includes(e--)) {
+            reserve.splice(reserve.indexOf(e--), 1);
+        } else if(reserve.includes(e++)) {
+            reserve.splice(reserve.indexOf(e++), 1);
+        } else {
+            answer --;
         }
     }
-    
-    if(lost.length === answer) answer = n;
-    else if(answer < lost.length) {
-        let temp = answer;
-        answer = n - temp;
-    }
-
+        
     return answer;
 }
