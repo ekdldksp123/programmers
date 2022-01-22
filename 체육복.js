@@ -1,19 +1,14 @@
 const solution = (n, lost, reserve) => {
-    let answer = n;
 
-    for(let i in lost) {
-        if(reserve.includes(i)) reserve = reserve.filter(v=> v!== i);
-    }
+    let res = reserve.filter(v => !lost.includes(v));
+    let los = lost.filter(v => !reserve.includes(v));
     
-    for(let e of lost) {
-        if(reserve.includes(e--)) {
-            reserve.splice(reserve.indexOf(e--), 1);
-        } else if(reserve.includes(e++)) {
-            reserve.splice(reserve.indexOf(e++), 1);
-        } else {
-            answer --;
+    los = los.filter((v) => {
+        if(res.findIndex(e => Math.abs(e-v) === 1) === -1) return true;
+        else {
+            res.splice(res.indexOf(res.find(e => Math.abs(e-v) === 1)), 1);
+            return false;
         }
-    }
-        
-    return answer;
+    });
+    return n - los.length;
 }
