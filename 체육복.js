@@ -1,7 +1,8 @@
+
 const solution = (n, lost, reserve) => {
 
-    let res = reserve.filter(v => !lost.includes(v));
-    let los = lost.filter(v => !reserve.includes(v));
+    let res = reserve.sort().filter(v => !lost.includes(v));
+    let los = lost.sort().filter(v => !reserve.includes(v));
     
     los = los.filter((v) => {
         if(res.findIndex(e => Math.abs(e-v) === 1) === -1) return true;
