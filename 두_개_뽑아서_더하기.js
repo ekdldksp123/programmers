@@ -8,7 +8,7 @@ const solution = (numbers) => {
     return answer.sort((x,y) => x-y);
 }
 
-  const getCombinations = function (arr, selectNumber) {
+const getCombinations = function (arr, selectNumber) {
     const results = [];
     if (selectNumber === 1) return arr.map((el) => [el]); 
 
