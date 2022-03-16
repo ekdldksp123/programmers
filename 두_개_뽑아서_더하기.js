@@ -2,10 +2,7 @@ const solution = (numbers) => {
     const answer = [];
     const arr = getCombinations(numbers, 2).map(v => v.reduce((acc,cur) => acc+cur,0));
     
-    for(const e of arr) {
-        if(!answer.includes(e)) answer.push(e);
-    }
-    return answer.sort((x,y) => x-y);
+    return Array.from(Set(arr)).sort((x,y) => x-y);
 }
 
 const getCombinations = function (arr, selectNumber) {
