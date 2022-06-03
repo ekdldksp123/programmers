@@ -1,4 +1,4 @@
-# programmers_Lv1
+# programmers
 
 ### _2022.01.18_
 - K번째 수
